@@ -1,0 +1,6 @@
+.data
+	age: .word 20
+
+.text
+	lw $a0, age 
+	syscall 

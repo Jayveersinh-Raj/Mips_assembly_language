@@ -1,0 +1,7 @@
+.data
+msg: .asciiz "hello\n" #random access memory
+
+.text
+	li $v0, 4 # to inform the system of a printing command
+	la $a0, msg #load address to a0 register
+	syscall 

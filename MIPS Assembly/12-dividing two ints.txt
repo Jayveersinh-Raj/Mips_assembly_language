@@ -1,0 +1,13 @@
+.data
+
+.text
+#I do not want to store in RAM
+addi $s0,$zero,30
+addi $s1,$zero,4
+# maximum 16 bit numbers
+div $s0,$s1
+mflo $t0#quotient
+mfhi $t1#remainder
+li $v0,1
+add $a0,$zero,$t1
+syscall

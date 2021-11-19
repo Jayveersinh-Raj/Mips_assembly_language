@@ -1,0 +1,15 @@
+.data
+msg : .asciiz "user input"
+zeroFloat :.float 0.0
+.text
+li $v0,4#the code to print a string
+la $a0,msg
+syscall
+lwc1 $f3,zeroFloat
+li $v0,6 #the code to get float input, the inout is located in $f0
+syscall
+
+
+li $v0,2#the code to print an float
+add.s $f12,$f3,$f0
+syscall

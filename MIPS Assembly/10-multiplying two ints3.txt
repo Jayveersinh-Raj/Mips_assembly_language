@@ -1,0 +1,10 @@
+.data
+
+.text
+addi $s0,$zero,4
+
+
+sll $t0,$s0,3 # 4*pow(2,3)..,srl works for division
+li $v0,1
+add $a0,$zero,$t0
+syscall

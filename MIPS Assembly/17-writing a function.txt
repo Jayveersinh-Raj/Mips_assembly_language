@@ -1,0 +1,13 @@
+.data
+
+msg :.asciiz"message"
+.text
+main:
+	jal display
+	li $v0,10#stop the function, endless recursion otherwise
+	syscall
+display:
+	li $v0,4
+	la $a0,msg
+	syscall
+	jr $ra #go back to the caller

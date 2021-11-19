@@ -1,0 +1,18 @@
+.data
+
+.text
+main:
+	addi $a1,$zero,2
+	addi $a2,$zero,5
+	jal addnums
+	
+	li $v0,1##print 
+	addi $a0,$v1,0
+	syscall
+	
+	
+	li $v0,10#stop the function, endless recursion otherwise
+	syscall
+addnums:
+	add $v1,$a1,$a2#by convention Vs are fot return values and As are for arguments
+	jr $ra #go back to the caller

@@ -1,0 +1,32 @@
+.data
+   newLine : .asciiz"\n"
+.text
+	main:
+		addi $s0,$zero,10
+		jal increase 
+		
+		#print a line
+	
+		li $v0,4
+		la $a0,newLine
+		syscall
+		
+		#print
+		li $v0,1
+		move $a0,$s0
+		syscall
+		
+		li $v0,10
+		syscall
+	increase:
+	# by convention, if using an S register inside a function, you are supposed to ave, use stack pointer
+	addi $sp,$sp,-4 #four bytes for an int, allocating four bytes, negative because the stack grows down
+	sw $s0,0($sp) #save to s0 the first element in sp, the offset should be also a multiple olf four
+	addi $s0,$s0,1 #increasing
+	#print the new value inside
+	li $v0,1
+	move $a0,$s0
+	syscall
+	lw $s0,0($sp) #load the value from memory
+	addi $sp,$sp,4 #restore the stack, now the old value will be available in main
+	jr $ra	
